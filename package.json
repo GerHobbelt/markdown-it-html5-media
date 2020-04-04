@@ -1,17 +1,17 @@
 {
-  "name": "markdown-it-html5-media",
-  "version": "0.6.0",
+  "name": "@gerhobbelt/markdown-it-html5-media",
+  "version": "0.6.0-1",
   "description": "Lightweight support for HTML5 video/audio using markdown image syntax",
   "repository": "https://github.com/eloquence/markdown-it-html5-media.git",
-  "main": "lib/index.js",
+  "type": "module",
+  "module": "lib/index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "mocha",
     "docs": "jsdoc -r lib/ -c jsdocConf.json -d docs/",
     "babel": "babel lib -d build",
-    "bundle": "browserify build/index.js --standalone html5Media -o build/markdown-it-html5-media.js",
-    "uglify": "uglifyjs build/markdown-it-html5-media.js -o build/markdown-it-html5-media.min.js",
-    "build": "npm run babel && npm run bundle && npm run uglify",
-    "dist": "npm run build && cp build/markdown-it-html5-media.* dist/"
+    "bundle": "browserify build/index.js --standalone html5Media -o dist/markdown-it-html5-media.js",
+    "build": "npm run babel && npm run bundle"
   },
   "keywords": [
     "markdown-it-plugin",
@@ -19,19 +19,45 @@
   ],
   "author": "Erik Moeller <eloquence@gmail.com> (https://twitter.com/xirzon)",
   "license": "CC0-1.0",
-  "dependencies": {
-    "markdown-it": "^8.4.0"
+  "peerDependencies": {
+    "@gerhobbelt/markdown-it": ">=10.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "browserify": "^14.5.0",
-    "jsdoc": "^3.5.5",
-    "markdown-it-testgen": "^0.1.4",
-    "mocha": "^4.0.1",
-    "uglify-js": "^3.1.9"
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.0",
+    "@babel/preset-env": "7.9.0",
+    "babel-plugin-add-module-exports": "1.0.2",
+    "@gerhobbelt/markdown-it": "10.0.0-31",
+    "@gerhobbelt/markdown-it-testgen": "0.1.6-7",
+    "browserify": "16.5.1",
+    "chai": "4.2.0",
+    "jsdoc": "3.6.3",
+    "mocha": "7.1.1"
   },
   "engines": {
-    "node": ">=6.0"
+    "node": ">=8.0"
+  },
+  "babel": {
+    "plugins": [
+      "babel-plugin-add-module-exports"
+    ],
+    "ignore": [
+      "node_modules/**/*.js"
+    ],
+    "compact": false,
+    "retainLines": false,
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": [
+              "> 2%"
+            ],
+            "node": "8.0"
+          }
+        }
+      ]
+    ]
   }
 }

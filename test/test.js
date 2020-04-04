@@ -1,10 +1,10 @@
 /* global it, describe */
 'use strict';
 const assert = require('assert');
-const MarkdownIt = require('markdown-it');
+const MarkdownIt = require('@gerhobbelt/markdown-it');
 const { html5Media } = require('../lib/index.js');
 const path = require('path');
-const generate = require('markdown-it-testgen');
+const generate = require('@gerhobbelt/markdown-it-testgen');
 
 const md = new MarkdownIt();
 md.use(html5Media);
