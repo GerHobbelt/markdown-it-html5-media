@@ -11,7 +11,8 @@
     "docs": "jsdoc -r lib/ -c jsdocConf.json -d docs/",
     "babel": "babel lib -d build",
     "bundle": "browserify build/index.js --standalone html5Media -o dist/markdown-it-html5-media.js",
-    "build": "npm run babel && npm run bundle"
+    "build": "npm run babel && npm run bundle",
+    "pub": "npm publish --access public"
   },
   "keywords": [
     "markdown-it-plugin",
